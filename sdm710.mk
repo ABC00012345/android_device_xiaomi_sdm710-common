@@ -129,7 +129,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.graphics.mapper@2.0-impl-qti-display \
     vendor.qti.hardware.display.allocator@1.0-service \
-    gralloc.qcom 
+    gralloc.sdm710 #gralloc.qcom # maybe needed
 
 PRODUCT_PACKAGES += \
     android.hardware.graphics.composer@2.3-service \
@@ -236,9 +236,9 @@ PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := true
 PRODUCT_PACKAGES += \
     android.hardware.keymaster@4.1.vendor
 
-# Lights
-PRODUCT_PACKAGES += \
-    android.hardware.light-service.xiaomi
+# Lights ## changed xiaomi > lineage
+#PRODUCT_PACKAGES += \
+    android.hardware.light-service.lineage
 
 # Lineage Health
 PRODUCT_PACKAGES += \
@@ -277,12 +277,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.neuralnetworks@1.3.vendor
 
-# NFC
+# NFC ### fixed build error
 PRODUCT_PACKAGES += \
     android.hardware.nfc@1.2-service \
     com.android.nfc_extras \
     libchrome.vendor \
-    NfcNci \
+    #NfcNci \
     SecureElement \
     Tag
 
@@ -305,13 +305,13 @@ PRODUCT_PACKAGES += \
     android.hardware.secure_element@1.2.vendor
 
 # OMX
-PRODUCT_PACKAGES += \
-    libOmxAacEnc \
-    libOmxAmrEnc \
+#PRODUCT_PACKAGES += \
+#    libOmxAacEnc \
+#    libOmxAmrEnc \
     libOmxCore \
-    libOmxEvrcEnc \
-    libOmxG711Enc \
-    libOmxQcelp13Enc \
+#    libOmxEvrcEnc \
+#    libOmxG711Enc \
+#    libOmxQcelp13Enc \
     libOmxVdec \
     libOmxVenc \
     libstagefrighthw
@@ -467,6 +467,12 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_BOOT_JARS += \
     WfdCommon
+
+## framework compatibility matrices
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
+    device/xiaomi/grus/compatibility_matrix.xml
+DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE += \
+    device/xiaomi/grus/compatibility_matrix.xml
 
 # Inherit the proprietary files
 $(call inherit-product, vendor/xiaomi/sdm710-common/sdm710-common-vendor.mk)
